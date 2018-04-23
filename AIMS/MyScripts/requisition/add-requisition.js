@@ -99,14 +99,14 @@
         //}
 
         var validation = true;
-        validation = (locationID != null && requiredDate != undefined);
+        validation = (locationID !== null && requiredDate !== undefined);
 
         if (!validation) {
 
-        } else {
+        }; else {
             for (var i in $scope.items) {
                 var item = $scope.items[i];
-                validation = (item['Quantity'] != 0 && item['InventoryItemID'] != undefined);
+                validation = (item['Quantity'] !== 0 && item['InventoryItemID'] !== undefined);
             }
         }
         if (validation) {
@@ -147,12 +147,12 @@
         if (addItemConfirm) {
             var data = {
                 newItemName: newItemName,
-                unitOfMeasurementID: (unitOfMeasurementID == null ? 0 : unitOfMeasurementID)
+                unitOfMeasurementID: (unitOfMeasurementID === null ? 0 : unitOfMeasurementID)
             };
             $http.post('/Requisition/AddNewItem', data)
                 .then(
                 function successCallback(response) {
-                    if (response.data == "ItemExist") {
+                    if (response.data === "ItemExist") {
                         $scope.newItemName = '';
                         toastr.warning("There must be no the same item it must be unique.", "Item is already Exists");
                         //$scope.ctrl.forNewItem = [];
